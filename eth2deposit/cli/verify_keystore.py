@@ -1,7 +1,4 @@
 import click
-from typing import (
-    Any,
-)
 from eth2deposit.key_handling.keystore import (
     Keystore,
 )
@@ -33,7 +30,7 @@ def verify_keystore(ctx: click.Context, keystore_path: str, keystore_password: s
     saved_keystore = Keystore.from_json(fjson)
     try:
         secret_bytes = saved_keystore.decrypt(keystore_password)
-    except:
+    except ValueError:
         print("Invalid password!")
     else:
         if (bls.SkToPk(int.from_bytes(secret_bytes, 'big')).hex() == fjson['pubkey']):
