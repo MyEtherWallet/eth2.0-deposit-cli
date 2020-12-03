@@ -21,10 +21,9 @@ from py_ecc.bls import G2ProofOfPossession as bls
     '--keystore_password',
     help=('The password that you used to secure your keystores.'),
     prompt='Type the password that secures your validator keystore(s)',
-    required=True,
     type=str,
 )
-def verify_keystore(ctx: click.Context, keystore_path: str, keystore_password: str) -> bool:
+def verify_keystore(ctx: click.Context, keystore_path: str, keystore_password: str) -> None:
     with open(keystore_path, 'r') as f:
         fjson = json.load(f)
     saved_keystore = Keystore.from_json(fjson)
