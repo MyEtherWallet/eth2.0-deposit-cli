@@ -35,6 +35,6 @@ def verify_keystore(ctx: click.Context, keystore_path: str, keystore_password: s
         hex_pubkey = bls.SkToPk(int.from_bytes(secret_bytes, 'big')).hex()
         if (hex_pubkey == fjson['pubkey']):
             click.echo('\nSuccess!\nYour keystore is valid')
-            click.echo('\nYou public key: %s' % hex_pubkey)
+            click.echo('\nYour public key: %s' % hex_pubkey)
         else:
             click.echo('\nError!\nYour keystore is invalid')
